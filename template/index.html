@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'index1.css' %}">
+    <title>Main Page</title>
+</head>
+<body>
+    <div id = "logo">
+        <h1>Emlakcım.NET</h1>
+        <span>Bu site üzerinden İstanbulda ki evinizin yaklaşık
+            değerini öğrenebilirsiniz 
+            <br>Ayrıca ilan verebilirsiniz.</span>
+    </div>
+
+    <div id = "searchField">
+        <form style = "height: 60px;" id="searchForm">
+            <div id="box">
+                <input type="text" name = "keyword" id="search" placeholder="İlan Ara.." autocomplete="off">
+                <i class="fa-search"></i>
+            </div>
+         </form>
+    </div>
+
+    <div id = "buttons">
+        <form>
+            <a href="/ilan-list">
+                <input type="button" class = "button" value="İlanlar">
+            </a>
+            &nbsp;
+            <a href="/tahmin/create">
+                <input type="button" class = "button" value="Evimin Değeri">
+            </a>
+            &nbsp;
+            <a href="/create-ilan">
+                <input type="button" class = "button" value="İlan Ver">
+            </a>
+        </form>
+    </div>
+    <footer>
+        <p style="text-align: center;">
+            <span style="font-size: large;">
+                <b>EMLAKCIM.NET</b>
+            </span> 
+            <br>Barış Keser<br> Sude Yüksek
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'tahmin-show1.css' %}">
+    <title>Tahmin Sonucu</title>
+</head>
+<body>
+    <div id = "header">
+        <h1><a href="/">Emlakcım.NET</a></h1>
+         <form style="height: 80px;">
+             <div id="box">
+                 <input type="text" name = "keyword" id="search" placeholder="İlan Ara.." autocomplete="off">
+                 <i class="fa-search"></i>
+             </div>
+          </form>    
+     </div>
+    <div id = "predict">
+        <span class = "info">Evinizin Tahmini Değer Aralığı</span>
+        <br>
+        <br>
+        <span class = "price">{{ alt_fiyat }} TL - {{ ust_fiyat }} TL</span>
+    </div>
+
+    <div id = "buttons">
+        <form>
+            <a href="/">
+                <input type="button" class="button" value="Anasayfa">
+            </a>
+            &nbsp;
+            &nbsp;
+            <a href="/tahmin/register/{{ tahmin.id }}">
+                <input type="button" class="button" value="İlan ver">
+            </a>
+        </form>
+    </div>
+
+    <footer>
+        <p style="text-align: center;">
+            <span style="font-size: large;">
+                <b>EMLAKCIM.NET</b>
+            </span> 
+            <br>Barış Keser<br> Sude Yüksek
+        </p>
+    </footer>
+</body>
+</html>

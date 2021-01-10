@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'tahmin-register1.css' %}">
+ 
+    <title>İlan Yayınla</title>
+</head>
+<body>
+    <div id = "header">
+        <h1><a href="/">Emlakcım.NET</a></h1>
+         <form style="height: 80px;">
+             <div id="box">
+                 <input type="text" name = "keyword" id="search" placeholder="İlan Ara.." autocomplete="off">
+                 <i class="fa-search"></i>
+             </div>
+          </form>    
+     </div>
+
+     <div id = "content">
+        <form action = "" method = "POST" class = "form">
+            {% csrf_token %}
+
+            <label for="fiyat">Fiyat : </label>
+            <br>
+            <input type="number" name = "fiyat" class = "fiyat" autocomplete="off">
+            <br>
+            <label for="title">İlan Başlığı : </label>
+            <br>
+            <textarea name="title" id="title" cols="60" rows="5"></textarea>
+            <br>
+            <label for="aciklama">İlan Açıklaması : </label>
+            <br>
+            <textarea name="aciklama" id="aciklama" cols="80" rows="10"></textarea>
+            <br>
+            <br>
+            <div class = "button-div">
+                <input type="submit" value="Oluştur" class = "button">
+            </div>
+        </form>
+     </div>
+
+     <footer>
+        <p style="text-align: center;">
+            <span style="font-size: large;">
+                <b>EMLAKCIM.NET</b>
+            </span> 
+            <br>Barış Keser<br> Sude Yüksek
+        </p>
+    </footer>
+</body>

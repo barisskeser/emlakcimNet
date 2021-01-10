@@ -1,0 +1,207 @@
+body {
+    background: lightgray;
+    height: auto;
+    color: #260B48;
+}
+
+#body{
+    height: auto;
+    background: lightgray;
+}
+
+#header {
+    height: 100px;
+    width: 100%;
+    background: #E7E4E1;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-size: 18px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+}
+
+#header > ul {
+    margin-left: auto;
+}
+
+#header > h1{
+    float: left;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: 30%;
+}
+ 
+#box {
+    margin-left: 35%;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    margin-bottom: 30%;
+}
+
+#box .fa-search {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    font-size: 20px;
+    color:lightgray;
+}
+ 
+#search {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    font-size:18px;
+    padding: 12px 20px 12px 40px;
+    border-radius: 40px;
+}
+
+#search:focus {
+    border: 2px solid gray;
+}
+
+#search:hover {
+    border: 2px solid gray;
+}
+
+#content {
+    width: 85%;
+    height: 1400px;
+    background: white;
+    margin: auto;
+    padding-left: 8%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.info-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#content > div > form {
+    padding: 20px;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.gray {
+    background: #f2f2f2;
+    border-radius: 10px;
+}
+
+#content > div {
+    margin-right: 5%;
+}
+
+form {
+    position: relative;
+}
+
+.info input, label {
+    width: 50%;
+    height: 2em;
+    font-size: 15px;
+}
+
+.info .button {
+    height: 40px;
+    width: 300px;
+    margin-right: 10%;
+    border-radius: 40px;
+    position: relative;
+    font-size: 25px;
+    text-align: center;
+    color: #260B48;
+    background: lightgray;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.info select {
+    width: 50%;
+    height: 2em;
+    font-size: 15px;
+    border-radius: 40px;
+    padding-left: 15px;
+}
+
+.info > div {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 44%;
+    float: left;
+    margin-right: 16px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+input {
+    padding-left: 15px;
+    border-radius: 40px;
+    border: 2px solid lightgray;
+}
+
+textarea {
+    border-radius: 25px;
+    padding-top: 15px;
+    border: 2px solid lightgray;
+    padding-left: 15px;
+}
+
+.info > .button-div{
+    width: 50%;
+    height: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 200px;
+    padding-right: 25px;
+    float: right;
+}
+
+
+.button:hover {
+    background: #E6E9F5;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background: #f2f2f2;
+    bottom: 0px;
+    left: 0px;
+    padding:20px;
+}
+
+a {
+    color: #260B48;
+}
+a:link {
+    color: #260B48;
+    text-decoration: none;
+}
+a:visited {
+    color: #260B48;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #260B48;
+    text-decoration: none;
+}
+
+a:active {
+    color: #260B48;
+    text-decoration: none;
+}

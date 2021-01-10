@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    {% load index %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'create-ilan3.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <title>İlan Oluştur</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#id_mahalle')
+                .find('option')
+                .remove()
+                .end();
+
+            var selected_ilce = $('#id_ilce').children("option:selected").val();
+            {% for j in len_mahalle %}
+            
+                if(selected_ilce == "{{ mahalle.İLCE|index:j }}"){
+                    $('#id_mahalle').append(`<option value="{{ mahalle.MAHALLE|index:j }}">{{ mahalle.MAHALLE|index:j }}</option>`);
+                }
+            {% endfor %}
+
+            $("#id_ilce").change(function(){
+                
+                $('#id_mahalle')
+                .find('option')
+                .remove()
+                .end();
+                
+                var selected_ilce = $('#id_ilce').children("option:selected").val();
+                {% for j in len_mahalle %}
+            
+                    if(selected_ilce == "{{ mahalle.İLCE|index:j }}"){
+                        $('#id_mahalle').append(`<option value="{{ mahalle.MAHALLE|index:j }}">{{ mahalle.MAHALLE|index:j }}</option>`);
+                    }
+                {% endfor %}
+
+            });
+
+
+        });
+
+    </script>
+
+</head>
+<body>
+    <div id = "header">
+        <h1><a href="/">Emlakcım.NET</a></h1>
+        <form style="height: 80px;">
+            <div id="box">
+                <input type="text" name = "keyword" id="search" placeholder="İlan Ara.." autocomplete="off">
+                <i class="fa-search"></i>
+            </div>
+         </form>
+    </div>
+    <div id = "body">
+        <div id = "content">
+            <form action="" method = "POST" class="info">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div>
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{field}}
+                        <br>
+                    </div>
+                {% endfor %}
+                <div class = "button-div">
+                    <input type="submit" value="Oluştur" class = "button">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p style="text-align: center;">
+            <span style="font-size: large;">
+                <b>EMLAKCIM.NET</b>
+            </span> 
+            <br>Barış Keser<br> Sude Yüksek
+        </p>
+    </footer>
+</body>
+</html>

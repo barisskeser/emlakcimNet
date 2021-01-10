@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'ilan5.css' %}">
+    <title>İlanlar</title>
+</head>
+<body>
+    <div id = "header">
+       <h1><a href="/">Emlakcım.NET</a></h1>
+       <form style = "height: 80px;">
+            <div id="box">
+                <input type="text" name ="keyword" id="search" placeholder="İlan Ara.." autocomplete="off">
+                <i class="fa-search"></i>
+            </div>
+        </form>
+    </div>
+    <div id = "content">
+        <div class = "right-bar">
+            {% for post in posts %}
+                <a href="detail/{{ post.id }}">
+                    <div class = "advertisements">
+                        <div class = "home-logo">
+                            <img id = "home-pic" src="{% static 'home-detail.jpg' %}" alt="">
+                        </div>
+                        <div class = "detail">
+                            <span id = "price">{{ post.fiyat }} TL</span>
+                            <br>
+                            <span id = "title">{{ post.title }}</span>
+                            <br>
+                            <span id = "status"><span>{{ post.m2 }}m<sup>2</sup></span>
+                                <span>|</span> 
+                                <span>{{ post.oda }} + {{ post.salon }}</span>
+                                <span>|</span> 
+                                <span>{{ post.bina_yaş }} Yaşında</span>
+                                <span>|</span> 
+                                <span>{{ post.bulundugu_kat }}</span>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <p style="text-align: center;">
+            <span style="font-size: large;">
+                <b>EMLAKCIM.NET</b>
+            </span> 
+            <br>Barış Keser<br> Sude Yüksek
+        </p>
+    </footer>
+</body>
+</html>

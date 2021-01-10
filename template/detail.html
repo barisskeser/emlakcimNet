@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'detail3.css' %}">
+ 
+    <title>İlan Detayları</title>
+</head>
+<body>
+    <div id = "header">
+       <h1><a href="/">Emlakcım.NET</a></h1>
+        <form>
+            <div id="box">
+                <input type="text" name = "keyword" id="search" placeholder="İlan Ara.." autocomplete="off">
+                <i class="fa-search"></i>
+            </div>
+         </form> 
+    </div>
+    <img id = "photo" src="{% static 'home-detail.jpg' %}" alt="">
+    <div id = "title">
+        <span class = "price">{{ post.fiyat }} TL</span>
+        <br><br>
+        <span class = "top-title">{{ post.title }}</span>
+        <br>
+        <span class = "bottom-title">{{ post.il }}</span>
+        <span class = "bottom-title">|</span>
+        <span class = "bottom-title">{{ post.ilçe }}</span>
+        <span class = "bottom-title">|</span>
+        <span class = "bottom-title">{{ post.mahalle }}</span>
+        <span class = "bottom-title">|</span>
+        <span class = "bottom-title">Satılık</span>
+        <span class = "bottom-title">|</span>
+        <span class = "bottom-title">Daire</span>
+        <span class = "bottom-title">|</span>
+        <span class = "bottom-title">{{ post.oda }} + {{ post.salon }}</span>
+        <span class = "bottom-title">|</span>
+        <span class = "bottom-title">{{ post.m2 }}m<sup>2</sup></span>
+    </div>
+    <div id = "details">
+        <span class = "info">İlan Bilgileri</span>
+        <br>
+        <ul>
+            <li class = "gray">
+                <span class = "info-title">İlan Durumu</span>
+                <span class = "info-content">Satılık</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">İlan Tipi</span>
+                <span class = "info-content">Daire</span>
+            </li>
+            <li>
+                <span class = "info-title">Oda sayısı</span>
+                <span class = "info-content">{{ post.oda }}</span>
+            </li>
+            <li>
+                <span class = "info-title">Salon Sayısı</span>
+                <span class = "info-content">{{ post.salon }}</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">Banyo Sayısı</span>
+                <span class = "info-content">{{ post.banyo }}</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">M<sup>2</sup></span>
+                <span class = "info-content">{{ post.m2 }}</span>
+            </li>
+            <li>
+                <span class = "info-title">Bulunduğu Kat</span>
+                <span class = "info-content">{{ post.bulundugu_kat }}</span>
+            </li>
+            <li>
+                <span class = "info-title">Toplam Bina Katı</span>
+                <span class = "info-content">{{ post.bina_kat }}</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">Bina Yaşı</span>
+                <span class = "info-content">{{ post.bina_yaş }}</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">Tapu Durumu</span>
+                <span class = "info-content">{{ post.tapu }}</span>
+            </li>
+            <li>
+                <span class = "info-title">Takas Durumu</span>
+                <span class = "info-content">{{ post.takas }}</span>
+            </li>
+            <li>
+                <span class = "info-title">Isında Tipi</span>
+                <span class = "info-content">{{ post.isinma }}</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">Krediye Uygunluk</span>
+                <span class = "info-content">{{ post.kredi }}</span>
+            </li>
+            <li class = "gray">
+                <span class = "info-title">Oluşturulma Tarihi</span>
+                <span class = "info-content">{{ post.created_date }}</span>
+            </li>
+        </ul>
+    </div>
+    <div id = "explanation">
+        <span class = "info">İlan Açıklaması</span>
+        <br>
+        <p>
+            {{ post.aciklama }}
+        </p> 
+    </div>
+    <footer>
+        <p style="text-align: center;">
+            <span style="font-size: large;">
+                <b>EMLAKCIM.NET</b>
+            </span> 
+            <br>Barış Keser<br> Sude Yüksek
+        </p>
+    </footer>
+</body>
+</html>
