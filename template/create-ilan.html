@@ -14,19 +14,22 @@
 
     <script>
         $(document).ready(function(){
+            // Mahalle select box ı boşaltma
             $('#id_mahalle')
                 .find('option')
                 .remove()
                 .end();
-
+            // Seçilen ilçenin alınması
             var selected_ilce = $('#id_ilce').children("option:selected").val();
             {% for j in len_mahalle %}
-            
+
+                // İlçeye ait mahallelerin mahalle select box a yüklenmesi
                 if(selected_ilce == "{{ mahalle.İLCE|index:j }}"){
                     $('#id_mahalle').append(`<option value="{{ mahalle.MAHALLE|index:j }}">{{ mahalle.MAHALLE|index:j }}</option>`);
                 }
             {% endfor %}
 
+            // Yukarıdaki işlemlerin ilçe değiştiğinde de yapılması
             $("#id_ilce").change(function(){
                 
                 $('#id_mahalle')

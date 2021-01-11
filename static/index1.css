@@ -57,15 +57,15 @@ body {
     border: 2px solid gray;
 }
 
+#search:hover {
+    border: 0px;
+}
+
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
 
 input {
-    border: 0px;
-}
-
-#search:hover {
     border: 0px;
 }
 

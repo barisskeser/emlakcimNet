@@ -3,6 +3,7 @@ from .models import Ilan
 
 # Register your models here.
 
+#Ilan uygulamasının admin paneline kaydı
 @admin.register(Ilan)
 class IlanAdmin(admin.ModelAdmin):
     list_display = ["title", "created_date"]

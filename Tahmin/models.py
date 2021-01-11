@@ -3,6 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 
+#Tahmin modelindeki değişkenlerin tanımlanması
 class Tahmin(models.Model):
     oda = models.IntegerField(verbose_name="Oda")
     salon = models.IntegerField(verbose_name="Salon")

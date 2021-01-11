@@ -4,33 +4,39 @@ import os
 
 from Ilan.models import Ilan
 
+
+#Ilan için veri giriş alanlarınun django.forms ile oluşturulması
 class CreateForms(forms.Form):
+
+    #Gerekli dosyaların okunması
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'ilce.csv')   #full path to text.
+    file_path = os.path.join(module_dir, 'ilce.csv')   
     data = pd.read_csv(file_path)
 
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'mahalle.csv')   #full path to text.
+    file_path = os.path.join(module_dir, 'mahalle.csv')   
     mahalleFile = pd.read_csv(file_path)
 
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'isinma.csv')   #full path to text.
+    file_path = os.path.join(module_dir, 'isinma.csv')   
     isiFile = pd.read_csv(file_path)
 
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'kat.xlsx')   #full path to text.
+    file_path = os.path.join(module_dir, 'kat.xlsx')   
     katFile = pd.read_excel(file_path)
 
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'tapu.csv')   #full path to text.
+    file_path = os.path.join(module_dir, 'tapu.csv')   
     tapuFile = pd.read_csv(file_path)
 
+    #select boxlara eklemek için listeler
     CHOICES_ilce = []
     CHOICES_mahalle = []
     CHOICES_isinma = []
     CHOICES_kat = []
     CHOICES_tapu = []
 
+    # [ [value, text], .....] şeklinde liste oluşturulması
     for i in data.ILCE:
         l = []
         l.append(i)
@@ -58,13 +64,13 @@ class CreateForms(forms.Form):
         l.append(i)
         l.append(i)
         CHOICES_tapu.append(l)
-
+    
     yesOrNo = [("Evet", "Evet"),("Hayır", "Hayır")]
     istanbul = [("İstanbul", "İstanbul")]
 
 
 
-
+    #Forma eklenecek input alanları
 
     il = forms.ChoiceField(widget=forms.Select, label="İl", choices=istanbul)
     ilce = forms.ChoiceField(widget=forms.Select, label="İlçe", choices=CHOICES_ilce)
@@ -85,7 +91,7 @@ class CreateForms(forms.Form):
     title = forms.CharField(label="İlan Başlığı", widget=forms.Textarea)    
     aciklama = forms.CharField(label="Açıklama", widget=forms.Textarea)
     
-
+    #Submit olduğunda input alanlarının temizlenmesi
     def clean(self):
         title = self.cleaned_data.get("title")
         il = self.cleaned_data.get("il")
@@ -106,6 +112,7 @@ class CreateForms(forms.Form):
         fiyat = self.cleaned_data.get("fiyat")
         aciklama = self.cleaned_data.get("aciklama")
         
+        #Değerlerin sözlük halinde geri döndürülmesi
         values = {
             "title" : title,
             "il" : il,

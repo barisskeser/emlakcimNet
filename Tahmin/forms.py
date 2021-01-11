@@ -2,7 +2,10 @@ from django import forms
 import pandas as pd
 import os
 
+#Tahmin için veri giriş alanlarınun django.forms ile oluşturulması
 class CreateTahminForms(forms.Form):
+
+    #Gerekli dosyaların okunması
     module_dir = os.path.dirname(__file__)
     file_path = os.path.join(module_dir, 'ilce.csv')   #full path to text.
     data = pd.read_csv(file_path)
@@ -23,12 +26,14 @@ class CreateTahminForms(forms.Form):
     file_path = os.path.join(module_dir, 'tapu.csv')   #full path to text.
     tapuFile = pd.read_csv(file_path)
 
+    #select boxlara eklemek için listeler
     CHOICES_ilce = []
     CHOICES_mahalle = []
     CHOICES_isinma = []
     CHOICES_kat = []
     CHOICES_tapu = []
 
+    # [ [value, text], .....] şeklinde liste oluşturulması
     for i in data.ILCE:
         l = []
         l.append(i)
@@ -62,7 +67,7 @@ class CreateTahminForms(forms.Form):
 
 
 
-
+    #Forma eklenecek input alanları
 
     il = forms.ChoiceField(widget=forms.Select, label="İl", choices=istanbul)
     ilce = forms.ChoiceField(widget=forms.Select, label="İlçe", choices=CHOICES_ilce)
@@ -80,7 +85,7 @@ class CreateTahminForms(forms.Form):
     kredi = forms.ChoiceField(label="Krediye uygunluk", widget=forms.Select, choices=yesOrNo)
     m2 = forms.DecimalField(label="Metre Karesi")
     
-
+    #Submit olduğunda input alanlarının temizlenmesi
     def clean(self):
         il = self.cleaned_data.get("il")
         ilce = self.cleaned_data.get("ilce")
@@ -98,6 +103,7 @@ class CreateTahminForms(forms.Form):
         kredi = self.cleaned_data.get("kredi")
         m2 = self.cleaned_data.get("m2")
         
+        #Değerlerin sözlük halinde geri döndürülmesi
         values = {
             "il" : il,
             "ilce" : ilce,

@@ -3,6 +3,7 @@ from django.utils import timezone
 
 # Create your models here.
 
+#Ilan modelinde bulunacak değişkenler
 class Ilan(models.Model):
     title = models.CharField(max_length = 500, verbose_name="Başlık")
     fiyat = models.IntegerField(verbose_name="Fiyat")

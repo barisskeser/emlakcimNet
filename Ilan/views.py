@@ -10,25 +10,28 @@ from django.http import Http404
 
 # Create your views here.
 
+#Anasayfaya ait fonksiyon
 def index(request):
     if request.method == "GET":
         keyword = request.GET.get('keyword')
-        if keyword:
-            posts = Ilan.objects.all().filter(title__contains = keyword).order_by("created_date")
+        if keyword: # Eğer arama yapılırsa ilan başlığına göre ilan listesine yönlendirme
+            posts = Ilan.objects.all().filter(title__contains = keyword).order_by("created_date") #başıkta keyword değerini içeren ilanların getirilmesi
             return HttpResponseRedirect("/ilan-list/?keyword=" + keyword)
-    return render(request, "index.html")
+    return render(request, "index.html") #Html dosyasının çağrılması
 
 def create(request):
 
     if request.method == "GET":
         keyword = request.GET.get('keyword')
-        if keyword:
+        if keyword:# Eğer arama yapılırsa ilan başlığına göre ilan listesine yönlendirme
             posts = Ilan.objects.all().filter(title__contains = keyword).order_by("created_date")
-            return HttpResponseRedirect("/ilan-list/?keyword=" + keyword)
+            return HttpResponseRedirect("/ilan-list/?keyword=" + keyword) 
 
+    #HTML inputta girilen değerlerin forms.py de ki CreateForms a gönderilerek nesne oluşturulması
     if request.method == "POST":
         form = CreateForms(request.POST)
         print(form.errors)
+        # Eğer veriler geçerli ise değişkenlere aktarılması
         if form.is_valid():
             title = form.cleaned_data.get("title")
             il = form.cleaned_data.get("il")
@@ -49,6 +52,7 @@ def create(request):
             fiyat = form.cleaned_data.get("fiyat")
             aciklama = form.cleaned_data.get("aciklama")
 
+            #Ilan nesnesi oluşturulması
             ilan = Ilan(title = title, 
             fiyat = fiyat, 
             aciklama = aciklama, 
@@ -68,34 +72,36 @@ def create(request):
             kredi=kredi,
             m2 = m2)
 
+            #Kaydedilmesi
             ilan.save()
-            return HttpResponseRedirect('/ilan-list')
+            return HttpResponseRedirect('/ilan-list') #İlan listesine yönderilme
         else:
             raise Http404
     
+    #mahalle.csv dosyasının okunarak html'e gönderilmesi
     module_dir = os.path.dirname(__file__)
-    file_path = os.path.join(module_dir, 'mahalle.csv')   #full path to text.
+    file_path = os.path.join(module_dir, 'mahalle.csv')
     mahalle = pd.read_csv(file_path)
 
     form = CreateForms()
-    return render(request, "create-ilan.html", {'form' : form, "mahalle" : mahalle, "len_mahalle" : range(778)})
+    return render(request, "create-ilan.html", {'form' : form, "mahalle" : mahalle, "len_mahalle" : range(778)}) #Html dosyasının çağrılması ve veri gönderilmesi
 
 def ilan(request):
     if request.method == 'GET':
         keyword = request.GET.get('keyword')
-        if keyword:
+        if keyword:# Eğer arama yapılırsa ilan başlığına göre ilan listesine yönlendirme
             posts = Ilan.objects.all().filter(title__contains = keyword).order_by("created_date")
             return render(request, 'ilan-list.html', {'posts': posts})
     
     posts = Ilan.objects.order_by("created_date").all()
-    return render(request, "ilan-list.html", {'posts' : posts})
+    return render(request, "ilan-list.html", {'posts' : posts}) #Html dosyasının çağrılması ve veri gönderilmesi
 
 
 def detail(request, id):
     if request.method == "GET":
         keyword = request.GET.get('keyword')
-        if keyword:
+        if keyword:# Eğer arama yapılırsa ilan başlığına göre ilan listesine yönlendirme
             posts = Ilan.objects.all().filter(title__contains = keyword).order_by("created_date")
             return HttpResponseRedirect("/ilan-list/?keyword=" + keyword)
     post = Ilan.objects.get(id = id)
-    return render(request, "detail.html", {'post' : post})
+    return render(request, "detail.html", {'post' : post}) #Html dosyasının çağrılması ve veri gönderilmesi

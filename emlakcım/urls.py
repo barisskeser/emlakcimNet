@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+#Girilen url'ye göre yönlendirmenin yapıldığı alan
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("Ilan.urls")),
+    path('', include("Ilan.urls")), #include fonksiyonu İçerisinde yazılan dosyaya yönendirir
     path('create-ilan/', include("Ilan.urls")),
     path('ilan-list/', include("Ilan.urls")),
     path('detail/<int:id>', include("Ilan.urls")),
